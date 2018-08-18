@@ -1,0 +1,10 @@
+<h1>Here are the movies with the highest average rating!</h1>
+
+<ul>
+  <% @movies.each do |movie| %>
+  <li>
+    <%= link_to movie.title, movie_path(movie) %>
+
+  </li>
+  <% end %>
+</ul>

@@ -1,0 +1,15 @@
+<h1>Latest Reviews</h1>
+
+<div>
+  <ul>
+    <% @reviews.each do |review| %>
+      <li>
+        <h4><%= review.movie.title %></h4>
+      </li>
+      <li>
+        Review: <%= link_to review.title, review_path(review) %>
+
+      <% end %>
+      </li>
+  </ul>
+</div>

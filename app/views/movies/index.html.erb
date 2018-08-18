@@ -1,0 +1,70 @@
+<% if session[:user_id] %>
+  <h1><%= @user.name %></h1>
+  Hello, <%= @user.name %>. <%= link_to "Click here to review a movie", new_review_path %>.
+  <p><%= link_to 'Logout', logout_path %></p>
+<% else %>
+  <p><%= link_to 'click here to login', '/login' %></p>
+  <p><%= link_to('Log in with Facebook!', '/auth/facebook') %></p>
+<% end %>
+
+<h1>Our Most Recent Movie Reviews!</h1>
+
+
+<div>
+  <ul>
+    <% @reviews.each do |review| %>
+      <li>
+        <h4><%= review.movie.title %></h4>
+      </li>
+      <li>
+        Review: <%= link_to review.title, review_path(review) %>
+
+      <% end %>
+      </li>
+  </ul>
+</div>
+
+<div>
+  <h3>View our movies with the highest average rating!</h3>
+  <%= link_to 'view highest rated movies', action: "top_movies" %>
+
+
+<div>
+  <h3>Filter by Movie:</h3>
+  <%= form_tag("/movies", method: "get") do %>
+    <%= select_tag "title", options_from_collection_for_select(Movie.all, "title", "title"), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>
+
+
+<!-- Filter By Movie Title -->
+<% if !params[:title].blank? %>
+  <% @movies_by_title = Movie.where(title: params[:title]) %>
+<% end %>
+
+<% if @movies_by_title %>
+  <% @movies_by_title.each do |movie| %>
+    <h4><%= movie.title %></h4>
+      <ul>
+        <% movie.reviews.each do |review| %>
+          <li>
+            Review Title: <%= review.title %>
+          </li>
+          <li>
+            Review Content: <%= review.content %>
+          </li>
+        <% end %>
+    </ul>
+  <% end %>
+<% end %>
+<!-- end filter movie by title -->
+
+
+<!-- <%= render 'movie_lists' %> -->
+
+<p>add filter for best movies etc</p>
+
+Try to add autocomplete search bar for finding movies.
+
+Or just add a regular search bar.

@@ -1,0 +1,16 @@
+Here is your selected movie!
+
+<h1><%= @movie.title %></h1>
+
+<ul>
+
+  <% @movie.reviews.each do |review| %>
+    <li>
+      <h4>Review Title: </h4> <%= review.title %>
+      <h4>Review Content: </h4><%= review.content %>
+      <p>Author: <%= link_to review.user.name, user_path(review.user) %></p> 
+    </li>
+    <% end %>
+
+
+</ul>

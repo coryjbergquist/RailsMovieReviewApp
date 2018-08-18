@@ -1,0 +1,26 @@
+<% if @user.id && session[:user_id] == @user.id %>
+<h1>Hello, <%= @user.name %></h1>
+<p><%= link_to 'Logout', logout_path %></p>
+
+
+<h2>Here are your reviews</h2>
+
+<h3><%= link_to "click here to review a movie", new_review_path %></h3>
+
+<% else %>
+<h2>Here are <%= @user.name %>'s reviews.</h2>
+
+<% end %>
+
+<div>
+  <% @user.reviews.each do |review| %>
+    <ul>
+      <li>
+        Movie Title: <%= review.movie.title %>
+      </li>
+      <li>
+        Review Title: <%=link_to review.title, review_path(review) %>
+      </li>
+    </ul>
+  <% end %>
+<div>

@@ -1,0 +1,17 @@
+<h1>New User</h1>
+<% if flash[:notice] %>
+   <div><font color="red">Sign up failed because: <%= flash[:notice].join(", ") %></font></div>
+ <% end %>
+
+<%= form_for @user do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, placeholder: "username" %>
+  <%= f.label :password %>
+  <%= f.text_field :password, placeholder: "password" %><br>
+  <input type="checkbox" name="admin" id="user_admin" value=true>Check if you are an Admin<br>
+  <%= f.submit %>
+
+<% end %>
+
+<%= link_to "or login", '/login' %>
