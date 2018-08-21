@@ -19,7 +19,7 @@
         Movie Title: <%= review.movie.title %>
       </li>
       <li>
-        Review Title: <%=link_to review.title, review_path(review) %>
+        Review Title: <%=link_to review.title, movie_review_path(review.movie.id, review.id) %>
       </li>
     </ul>
   <% end %>

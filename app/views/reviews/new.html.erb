@@ -4,10 +4,6 @@
    <div><font color="red">Review failed because: <%= flash[:notice].join(", ") %></font></div>
  <% end %>
 
-<% if @movie %>
-  <%= render 'reviews/new_review' %>
-<% else %>
-
   <h3>Select a movie and create a review </h3>
 
   <%= form_for @review, url: {action: "create"} do |f| %>
@@ -27,5 +23,3 @@
       <option value="<%= movie.title %>"></option>
     <% end %>
   </datalist>
-
-<% end %>

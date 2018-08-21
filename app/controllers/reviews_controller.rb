@@ -13,21 +13,18 @@ class ReviewsController < ApplicationController
 
   def create
     @movie = Movie.find_by(title: params[:review][:movie])
-    if @movie && !params[:review][:content]
-      @review = Review.new
-      render "new"
-    elsif @movie && params[:review][:content]
-      @user = current_user #check against params id and session user_id?
-      @review = Review.new(title: params[:review][:title], content: params[:review][:content], rating: params[:review][:rating])
-      @review.user_id = @user.id
-      @review.movie_id = @movie.id
-      if @review.save
-        redirect_to user_path(@user)
-      else
-        flash[:notice] = @review.errors.full_messages.each do |message|
-          message
-        end
+    @review = Review.new(reviews_params)
+    @user = current_user
+    @review.user_id = @user.id
+    @review.movie_id = @movie.id if @movie
+    if @review.save
+      redirect_to user_path(@user)
+    else
+      @user = current_user
+      flash[:notice] = @review.errors.full_messages.each do |message|
+        message
       end
+      render "new"
     end
   end
 
@@ -44,7 +41,6 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    #finish edit form and update/patch controller methods
     @review = Review.find(params[:id])
     @review.update(reviews_params)
   end
@@ -58,7 +54,7 @@ class ReviewsController < ApplicationController
   private
 
   def reviews_params
-    params.require(:review).permit(:title, :content, :rating, :movie)
+    params.require(:review).permit(:title, :content, :rating)
   end
 
 end
