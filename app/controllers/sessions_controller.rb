@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
 
   def new
-
+    @user = User.new
+    if current_user
+      @user = current_user
+      redirect_to user_path(@user)
+    end
   end
 
   def create
@@ -21,7 +25,7 @@ class SessionsController < ApplicationController
         redirect_to user_path(@user)
       else
         flash[:notice] = "That user does not exist, try again, or "
-        redirect_to '/login'
+        render 'new'
       end
     end
   end

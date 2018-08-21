@@ -34,6 +34,7 @@ class ReviewsController < ApplicationController
   def edit
     @user = current_user
     @review = Review.find(params[:id])
+    @movie = Movie.find_by(id: @review.movie_id)
     if is_logged_in?
 
     else
@@ -50,6 +51,7 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
+    @movie = @review.movie
     @user = @review.user
   end
 

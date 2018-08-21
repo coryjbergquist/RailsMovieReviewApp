@@ -12,6 +12,7 @@
 
   <%= form_for @review, url: {action: "create"} do |f| %>
     <%= f.select "movie", options_from_collection_for_select(Movie.all, "title", "title"), include_blank: true %>
+    <input list="movies">
     <%= f.label :title %>
     <%= f.text_field :title %>
     <%= f.label :content %>
@@ -20,5 +21,11 @@
     <%= f.select :rating, (1..5) %>
     <%= f.submit "Create Review" %>
   <% end %>
+
+  <datalist id="movies">
+    <% Movie.all.each do |movie| %>
+      <option value="<%= movie.title %>"></option>
+    <% end %>
+  </datalist>
 
 <% end %>

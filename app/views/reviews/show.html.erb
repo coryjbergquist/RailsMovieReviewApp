@@ -10,5 +10,5 @@
 <p>Author: <%= @review.user.name %>
 
   <% if is_logged_in? && current_user.id == @review.user.id %>
-  <%= link_to 'click here to edit this review', edit_review_path(@review) %>
+  <%= link_to 'click here to edit this review', edit_movie_review_path(@review.movie_id, @review.id) %>
   <% end %>

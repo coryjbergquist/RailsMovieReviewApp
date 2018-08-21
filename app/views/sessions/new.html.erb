@@ -4,12 +4,12 @@
    <div><font color="red"><%= flash[:notice] %><%= link_to "create new user", new_user_path %></font></div>
  <% end %>
 
-<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
-  <%= label_tag 'name' %>
-  <%= text_field_tag 'name' %>
-  <%= label_tag 'password' %>
-  <%= text_field_tag 'password' %>
-  <%= submit_tag 'login' %>
+<%= form_for @user do |f| %>
+  <%= f.label 'name' %>
+  <%= f.text_field 'name', placeholder: "enter username" %>
+  <%= f.label 'password' %>
+  <%= f.text_field 'password', placeholder: "enter password" %>
+  <%= f.submit 'login' %>
   <% end %>
   <br>
   or

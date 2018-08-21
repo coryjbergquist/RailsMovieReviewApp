@@ -7,7 +7,7 @@
         <h4><%= review.movie.title %></h4>
       </li>
       <li>
-        Review: <%= link_to review.title, review_path(review) %>
+        Review: <%= link_to review.title, movie_review_path(review.movie_id, review.id) %>
 
       <% end %>
       </li>

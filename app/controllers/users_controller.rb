@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       flash[:notice] = @user.errors.full_messages.each do |message|
         message
       end
-      redirect_to new_user_path
+      render 'users/new'
     end
   end
 

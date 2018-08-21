@@ -27,7 +27,6 @@ class MovieReviewsController < ApplicationController
     @movie = Movie.find(params[:movie_id])
     @review = @movie.reviews.find_by(id: params[:id])
     @user = current_user
-    render 'reviews/show'
   end
 
   def edit
@@ -40,6 +39,14 @@ class MovieReviewsController < ApplicationController
       flash[:notice] = "You cannot edit this review"
       render review_path(@review)
     end
+  end
+
+  def update
+    @user = current_user
+    @review = Review.find(params[:id])
+    @movie = Movie.find(params[:movie_id])
+    @review.update(movie_reviews_params)
+    redirect_to movie_review_path(@movie.id, @review.id)
   end
 
 

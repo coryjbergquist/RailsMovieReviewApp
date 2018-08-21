@@ -15,7 +15,7 @@ After starting your local server at http://localhost:3000/, you are able to crea
 3. Run "bundle install" to install all gems.
 4. Get new facebook_key and facebook_secret? and other keys?
 5. Enter "rails s" in your terminal to start your local server.
-6. MAKE YOUR OWN FACEBOOK KEY AND STUFF
+6. Create your own FACEBOOK_KEY and FACEBOOK_SECRET.
 
 # CONTRIBUTIONS
 
