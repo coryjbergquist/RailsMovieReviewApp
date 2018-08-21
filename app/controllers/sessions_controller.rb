@@ -19,13 +19,13 @@ class SessionsController < ApplicationController
       @reviews = @user.reviews
       redirect_to user_path(@user)
     else
-      @user = User.find_by(name: params[:name])
-      if @user && @user.authenticate(params[:password])
+      @user = User.find_by(name: params[:user][:name])
+      if @user && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
         redirect_to user_path(@user)
       else
         flash[:notice] = "That user does not exist, try again, or "
-        render 'new'
+        redirect_to action: "new"
       end
     end
   end
@@ -38,7 +38,7 @@ class SessionsController < ApplicationController
   private
 
   def session_params
-    params.permit(:name, :password)
+    params.require(:user).permit(:name, :password)
   end
 
   def auth

@@ -27,6 +27,7 @@ class MovieReviewsController < ApplicationController
     @movie = Movie.find(params[:movie_id])
     @review = @movie.reviews.find_by(id: params[:id])
     @user = current_user
+    #render 'movies/show'
   end
 
   def edit
