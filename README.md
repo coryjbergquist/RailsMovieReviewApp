@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails version 5.2.1
 
-Things you may want to cover:
+App for viewing and writing movie reviews.
 
-* Ruby version
+--USAGE--
 
-* System dependencies
+After starting your local server at http://localhost:3000/, you are able to create users, add/view/edit/delete reviews (depending on your user status).
 
-* Configuration
+--INSTALL DIRECTIONS--
 
-* Database creation
+1. Enter "git clone git@github.com:coryjbergquist/RailsMovieReviewApp.git" into your terminal, while in your desired directory.
+2. Navigate to newly created directory.
+3. Run "bundle install" to install all gems.
+4. Get new facebook_key and facebook_secret? and other keys?
+5. Enter "rails s" in your terminal to start your local server.
 
-* Database initialization
+--CONTRIBUTIONS--
 
-* How to run the test suite
+Bug reports and pull requests are welcome at https://github.com/coryjbergquist/RailsMovieReviewApp
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+--LICENSE--
