@@ -11,8 +11,8 @@
   <h3>Select a movie and create a review </h3>
 
   <%= form_for @review, url: {action: "create"} do |f| %>
-    <%= f.select "movie", options_from_collection_for_select(Movie.all, "title", "title"), include_blank: true %>
-    <input list="movies">
+    <label for=review_movie>Movie title</label>
+    <input list="movies" name="review[movie]" id="review_movie">
     <%= f.label :title %>
     <%= f.text_field :title %>
     <%= f.label :content %>

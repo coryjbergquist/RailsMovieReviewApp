@@ -4,6 +4,7 @@
   <p><%= link_to 'Logout', logout_path %></p>
 <% else %>
   <p><%= link_to 'click here to login', '/login' %></p>
+  <p><%= link_to "create new user", new_user_path %></p>
   <p><%= link_to('Log in with Facebook!', '/auth/facebook') %></p>
 <% end %>
 
@@ -62,9 +63,3 @@
 
 
 <!-- <%= render 'movie_lists' %> -->
-
-<p>add filter for best movies etc</p>
-
-Try to add autocomplete search bar for finding movies.
-
-Or just add a regular search bar.

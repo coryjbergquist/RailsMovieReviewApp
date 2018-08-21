@@ -6,6 +6,10 @@ module ApplicationHelper
     end
   end
 
+  def average_rating(movie)
+    movie.reviews.average(:rating).round
+  end
+
   def is_logged_in?
     if session[:user_id]
       current_user.id == @user.id

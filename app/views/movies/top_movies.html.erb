@@ -3,7 +3,8 @@
 <ul>
   <% @movies.each do |movie| %>
   <li>
-    <%= link_to movie.title, movie_path(movie) %>
+    <%= link_to movie.title, movie_reviews_path(movie.id) %>
+    Average Rating: <%= average_rating(movie) %>
 
   </li>
   <% end %>
