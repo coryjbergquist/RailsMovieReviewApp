@@ -6,7 +6,7 @@ App for viewing and writing movie reviews.
 
 # USAGE
 
-After starting your local server at http://localhost:3000/, you are able to create users, add/view/edit/delete reviews (depending on your user status).
+After starting your local server at http://localhost:3000/, you are able to create users, add/view/edit/delete reviews from a specified list of movies (depending on your user status).
 
 # INSTALL DIRECTIONS
 
@@ -22,3 +22,5 @@ After starting your local server at http://localhost:3000/, you are able to crea
 Bug reports and pull requests are welcome at https://github.com/coryjbergquist/RailsMovieReviewApp
 
 # LICENSE
+
+ This project has been licensed under the MIT open source license
