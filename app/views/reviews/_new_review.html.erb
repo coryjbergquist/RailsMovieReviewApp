@@ -1,0 +1,11 @@
+<h1>Create your review for <%= @movie.title %></h1>
+
+<%= form_for @review, url: {action: "create"} do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.label :rating %>
+  <%= f.select :rating, (1..5) %>
+  <%= f.submit "Create Review" %>
+<% end %>

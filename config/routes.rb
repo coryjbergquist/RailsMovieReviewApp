@@ -7,10 +7,12 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  resources :movies
 
   resources :movies do
-    resources :reviews
+    resources :reviews, controller: 'movie_reviews'
   end
+
   resources :reviews
   resources :users
   resources :sessions, only: [:new]

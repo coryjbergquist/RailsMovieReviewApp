@@ -1,19 +1,24 @@
 <!-- add autocomplete search bar to pick movie for new reviews -->
 
-
 <% if flash[:notice] %>
    <div><font color="red">Review failed because: <%= flash[:notice].join(", ") %></font></div>
  <% end %>
 
-<h3>Select a movie and create a review </h3>
+<% if @movie %>
+  <%= render 'reviews/new_review' %>
+<% else %>
 
-<%= form_for @review, url: {action: "create"} do |f| %>
-  <%= f.select "movie", options_from_collection_for_select(Movie.all, "title", "title"), include_blank: true %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-  <%= f.label :rating %>
-  <%= f.select :rating, (1..5) %>
-  <%= f.submit "Create Review" %>
+  <h3>Select a movie and create a review </h3>
+
+  <%= form_for @review, url: {action: "create"} do |f| %>
+    <%= f.select "movie", options_from_collection_for_select(Movie.all, "title", "title"), include_blank: true %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <%= f.label :rating %>
+    <%= f.select :rating, (1..5) %>
+    <%= f.submit "Create Review" %>
+  <% end %>
+
 <% end %>

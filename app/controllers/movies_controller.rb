@@ -1,4 +1,4 @@
-class MoviesController < ApplicationController
+class MoviesController < MovieReviewsController
   helper_method :params
 
   def index

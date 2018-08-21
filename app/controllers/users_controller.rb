@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     if is_logged_in?
       @user = User.find(session[:user_id])
       @user.admin = true if params[:admin]
+      @reviews = @user.reviews.last(5).reverse
       render 'users/show'
     else
       render 'users/show'

@@ -31,6 +31,23 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+    @review = Review.find(params[:id])
+    if is_logged_in?
+
+    else
+      flash[:notice] = "You cannot edit this review"
+      render review_path(@review)
+    end
+  end
+
+  def update
+    #finish edit form and update/patch controller methods
+    @review = Review.find(params[:id])
+    @review.update(reviews_params)
+  end
+
   def show
     @review = Review.find(params[:id])
     @user = @review.user
