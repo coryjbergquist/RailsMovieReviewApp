@@ -23,4 +23,5 @@ Bug reports and pull requests are welcome at https://github.com/coryjbergquist/R
 
 # LICENSE
 
- This project has been licensed under the MIT open source license
+ This project has been licensed under the MIT open source license:
+ https://github.com/coryjbergquist/RailsMovieReviewApp/blob/master/LICENSE.md
