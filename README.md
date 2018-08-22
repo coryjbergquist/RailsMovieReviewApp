@@ -6,7 +6,7 @@ App for viewing and writing movie reviews.
 
 # USAGE
 
-After starting your local server at http://localhost:3000/, you are able to create users, add/view/edit/delete reviews from a specified list of movies (depending on your user status).
+After starting your local server at http://localhost:3000/, you are able to create users, add/view/edit reviews from a specified list of movies (depending on your user status).
 
 # INSTALL DIRECTIONS
 
