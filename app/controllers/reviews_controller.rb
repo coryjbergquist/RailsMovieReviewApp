@@ -21,9 +21,7 @@ class ReviewsController < ApplicationController
       redirect_to user_path(@user)
     else
       @user = current_user
-      flash[:notice] = @review.errors.full_messages.each do |message|
-        message
-      end
+      flash[:notice] = @review.errors.full_messages.join(", ")
       render "new"
     end
   end

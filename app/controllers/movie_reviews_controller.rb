@@ -21,6 +21,9 @@ class MovieReviewsController < ApplicationController
     @movie.reviews.last.user_id = current_user.id
     @movie.save
     redirect_to review_path(@movie.reviews.last)
+    #make a partial for a new review form specifically for this nested route
+    #make sure that form sends to this nested controller, not the regular
+    #reviews controller
   end
 
   def show

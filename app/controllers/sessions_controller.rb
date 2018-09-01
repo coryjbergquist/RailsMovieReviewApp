@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to user_path(@user)
       else
-        flash[:notice] = "That user does not exist, try again, or "
+        flash[:notice] = "invalid email or password!"
         redirect_to action: "new"
       end
     end

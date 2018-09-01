@@ -1,25 +1,26 @@
 <!-- add autocomplete search bar to pick movie for new reviews -->
 
 <% if flash[:notice] %>
-   <div><font color="red">Review failed because: <%= flash[:notice].join(", ") %></font></div>
+   <div><font color="red">Review failed because: <%= flash[:notice] %></font></div>
  <% end %>
 
   <h3>Select a movie and create a review </h3>
 
-  <%= form_for @review, url: {action: "create"} do |f| %>
-    <label for=review_movie>Movie title</label>
+  <%= form_for @review do |f| %>
+    <label for='review_movie'>Movie title</label>
     <input list="movies" name="review[movie]" id="review_movie">
     <%= f.label :title %>
     <%= f.text_field :title %>
+
+    <datalist id="movies">
+      <% Movie.all.each do |movie| %>
+        <option value="<%= movie.title %>"></option>
+      <% end %>
+    </datalist>
+
     <%= f.label :content %>
     <%= f.text_area :content %>
     <%= f.label :rating %>
     <%= f.select :rating, (1..5) %>
     <%= f.submit "Create Review" %>
   <% end %>
-
-  <datalist id="movies">
-    <% Movie.all.each do |movie| %>
-      <option value="<%= movie.title %>"></option>
-    <% end %>
-  </datalist>

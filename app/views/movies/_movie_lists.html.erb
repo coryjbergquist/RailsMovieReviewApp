@@ -1,5 +1,5 @@
-This movie has the most reviews!
+<h1>This movie has the most reviews!</h1>
 
 <% Movie.most_reviews.map do |movie| %>
-<h1><%= movie.title %></h1>
+<h3><%= link_to movie.title, movie_reviews_path(movie)  %></h3>
 <% end %>
