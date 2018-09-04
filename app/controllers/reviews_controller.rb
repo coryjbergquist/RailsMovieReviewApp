@@ -13,10 +13,7 @@ class ReviewsController < ApplicationController
 
   def create
     @movie = Movie.find_by(title: params[:review][:movie])
-    @review = Review.new(reviews_params)
-    @user = current_user
-    @review.user_id = @user.id
-    @review.movie_id = @movie.id if @movie
+    @review = @movie.reviews.build(title: params[:review][:title], content: params[:review][:content], rating: params[:review][:rating], user_id: current_user.id, movie_id: @movie.id)
     if @review.save
       redirect_to user_path(@user)
     else
