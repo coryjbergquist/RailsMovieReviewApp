@@ -13,7 +13,8 @@ class ReviewsController < ApplicationController
 
   def create
     @movie = Movie.find_by(title: params[:review][:movie])
-    @review = @movie.reviews.build(title: params[:review][:title], content: params[:review][:content], rating: params[:review][:rating], user_id: current_user.id, movie_id: @movie.id)
+    binding.pry
+    @review = @movie.reviews.build(reviews_params)
     if @review.save
       redirect_to user_path(@user)
     else
@@ -49,7 +50,7 @@ class ReviewsController < ApplicationController
   private
 
   def reviews_params
-    params.require(:review).permit(:title, :content, :rating)
+    params.require(:review).permit(:title, :content, :rating).merge(user_id: current_user.id, movie_id: @movie.id)
   end
 
 end
