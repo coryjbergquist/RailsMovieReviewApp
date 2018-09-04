@@ -41,7 +41,7 @@ class MovieReviewsController < ApplicationController
       render 'reviews/edit'
     else
       flash[:notice] = "You cannot edit this review"
-      render review_path(@review)
+      redirect_to review_path(@review)
     end
   end
 

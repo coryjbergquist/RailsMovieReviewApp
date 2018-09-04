@@ -26,19 +26,10 @@ class ReviewsController < ApplicationController
   def edit
     @user = current_user
     @review = Review.find(params[:id])
-    @movie = Movie.find_by(id: @review.movie_id)
-    if is_logged_in?
-
-    else
-      flash[:notice] = "You cannot edit this review"
-      render review_path(@review)
-    end
+    @movie = @review.movie
+    redirect_to edit_movie_review_path(@movie, @review)
   end
 
-  def update
-    @review = Review.find(params[:id])
-    @review.update(reviews_params)
-  end
 
   def show
     @review = Review.find(params[:id])
