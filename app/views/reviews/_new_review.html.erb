@@ -1,11 +1,20 @@
-<h1>Create your review for <%= @movie.title %></h1>
+<h3>Select a movie and create a review </h3>
 
-<%= form_for @review, :url => url_for(:controller => 'movie_reviews', :action => 'update') do |f| %>
+<%= form_for @review do |f| %>
+  <label for='review_movie'>Movie title</label>
+  <input list="movies" name="review[movie]" id="review_movie">
   <%= f.label :title %>
   <%= f.text_field :title %>
+
+  <datalist id="movies">
+    <% Movie.all.each do |movie| %>
+      <option value="<%= movie.title %>"></option>
+    <% end %>
+  </datalist>
+
   <%= f.label :content %>
   <%= f.text_area :content %>
   <%= f.label :rating %>
   <%= f.select :rating, (1..5) %>
-  <%= f.submit "Submit" %>
+  <%= f.submit "Create Review" %>
 <% end %>

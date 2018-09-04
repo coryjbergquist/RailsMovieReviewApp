@@ -1,0 +1,14 @@
+<h3>Make a new review for <%= @movie.title %></h3>
+
+<%= form_for @review do |f| %>
+  <%= f.label :movie %>
+  <%= f.text_field :movie, value: @movie.title, disabled: true %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.label :rating %>
+  <%= f.select :rating, (1..5) %>
+  <%= f.submit "Create Review" %>
+<% end %>

@@ -13,7 +13,6 @@ class ReviewsController < ApplicationController
 
   def create
     @movie = Movie.find_by(title: params[:review][:movie])
-    binding.pry
     @review = @movie.reviews.build(reviews_params)
     if @review.save
       redirect_to user_path(@user)
