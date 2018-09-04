@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
     @movie = Movie.find_by(title: params[:review][:movie])
     @review = @movie.reviews.build(reviews_params)
     if @review.save
-      redirect_to user_path(@user)
+      redirect_to user_path(current_user)
     else
       @user = current_user
       flash[:notice] = @review.errors.full_messages.join(", ")

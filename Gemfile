@@ -27,6 +27,13 @@ gem 'pry'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
+gem 'activeadmin'
+
+# Plus integrations with:
+gem 'devise'
+gem 'cancan' # or cancancan
+gem 'draper'
+gem 'pundit'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
