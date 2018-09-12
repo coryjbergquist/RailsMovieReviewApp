@@ -2,7 +2,7 @@
 
 Rails version 5.2.1
 
-App for viewing and writing movie reviews.
+App for viewing and writing movie reviews with Rails and JavaScript.
 
 # USAGE
 
