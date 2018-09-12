@@ -1,0 +1,27 @@
+1. Change user page to only display name and count of movie_reviews
+    - add "Show Reviews" button, that displays the users reviews
+      via jQuery and an Active Model Serialization JSON Backend
+
+2. Change the comments index page to only show the most recent comment.
+    - add "Next Comment" button, that cycles through comments
+      fetched and rendered via jQuery/AJAX.
+
+3. Change movie show page to only show the first review for that movie
+    - add "Show All Reviews" button, that displays all reviews
+      for that movie with jQuery/AJAX.
+
+4. Change movie review form to submit review via an AJAX POST request
+    - review would be serialized, then submitted via AJAX POST request
+      with the response being the new object in JSON and then appending
+      that new comment to the DOM using JavaScript (ES6 Template Literals
+      can help out a lot with this).
+
+5. Must translate the JSON responses into Javascript Model Objects.
+      The Model Objects must have at least one method on the prototype.
+      Formatters work really well for this. Borrowing from the previous
+      example, instead of plainly taking the JSON response of the newly
+      created comment and appending it to the DOM, you would create a
+      Comment prototype object and add a function to that prototype to
+      perhaps concatenate (format) the comments authors first and last name.
+      You would then use the object to append the comment information to
+      the DOM.
