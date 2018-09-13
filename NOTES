@@ -2,7 +2,7 @@
     - add "Show Reviews" button, that displays the users reviews
       via jQuery and an Active Model Serialization JSON Backend
 
-2. Change the comments index page to only show the most recent comment.
+2. Change the reviews index page to only show the most recent comment.
     - add "Next Comment" button, that cycles through comments
       fetched and rendered via jQuery/AJAX.
 

@@ -27,9 +27,13 @@ class MovieReviewsController < ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[:movie_id])
-    @review = Review.find_by_id(params[:id])
-    @user = current_user
+    @review = Review.find(params[:id])
+    @movie = @review.movie
+    @user = @review.user
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @review, status: 200}
+    end
     #render 'movies/show'
   end
 
