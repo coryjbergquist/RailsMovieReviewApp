@@ -14,7 +14,7 @@
 
 
   <!-- ####### BELOW IS A WORK IN PROGRESS ####### -->
-
+  <h1> Here is the review for <%= @review.movie.title %></h1>
   <a href="#" class="js-next" data-id="<%=@review.id%>">Next Review</a>
   <h1 class="reviewTitle"><%= @review.title %></h1>
   <p class="reviewContent"><%= @review.content %></p>
@@ -25,9 +25,10 @@
     $(".js-next").on("click", function() {
       var nextId = parseInt($(".js-next").attr("data-id")) + 1;
       $.get("/reviews/" + nextId + ".json", function(data) {
-        $(".reviewTitle").text(data["name"]);
-        $(".reviewContent").text(data["price"]);
-        $(".reviewRating").text(data["description"]);
+        debugger
+        $(".reviewTitle").text(data["title"]);
+        $(".reviewContent").text(data["content"]);
+        $(".reviewRating").text(data["rating"]);
         // re-set the id to current on the link
         $(".js-next").attr("data-id", data["id"]);
       });
