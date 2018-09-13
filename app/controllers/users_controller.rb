@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
   def user_data
     user = User.find(params[:id])
-    render json: ReviewSerializer.serialize(user.reviews)
+    render json: user.reviews, status: 200
     # render json: user.reviews.to_json(only: [:title, :content, :id, :movie_id],
     #                                   include: {user: {only: :name}}
     #                                   )
