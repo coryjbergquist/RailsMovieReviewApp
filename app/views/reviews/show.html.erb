@@ -39,4 +39,23 @@
   });
   </script>
 
+  <script type="text/javascript" charset="utf-8">
+  $(function () {
+    $(".js-previous").on("click", function() {
+      var nextId = parseInt($(".js-next").attr("review-id")) - 1;
+      $.get("/reviews/" + nextId + ".json", function(data) {
+
+        $(".movieTitle").html("Movie Title: " + data["movie"]["title"]);
+        $(".reviewTitle").html("Review Title: " + data["title"]);
+        $(".reviewContent").html("Review Content: " + data["content"]);
+        $(".reviewRating").html("Rating: " + data["rating"]);
+        // re-set the id to current on the link
+        $(".js-next").attr("review-id", data["id"]);
+      });
+      return false
+    });
+  });
+  </script>
+
+  <a href="#" class="js-previous" review-id="<%=@review.id%>">Previous Review</a>
   <a href="#" class="js-next" review-id="<%=@review.id%>">Next Review</a>
