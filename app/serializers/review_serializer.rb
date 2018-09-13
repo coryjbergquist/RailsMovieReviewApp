@@ -1,5 +1,5 @@
 class ReviewSerializer < ActiveModel::Serializer
-  attributes :id, :title, :content, :movie_id
+  attributes :id, :title, :content, :rating, :movie_id
   belongs_to :movie
 
   # def self.serialize(reviews)
