@@ -30,11 +30,14 @@ class ReviewsController < ApplicationController
     redirect_to edit_movie_review_path(@movie, @review)
   end
 
-
   def show
     @review = Review.find(params[:id])
     @movie = @review.movie
     @user = @review.user
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @review, status: 200}
+    end
   end
 
 

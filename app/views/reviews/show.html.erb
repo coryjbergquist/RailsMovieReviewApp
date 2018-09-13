@@ -11,3 +11,28 @@
   <% if is_logged_in? && current_user.id == @review.user.id %>
   <%= link_to 'click here to edit this review', edit_movie_review_path(@review.movie_id, @review.id) %>
   <% end %>
+
+
+  <!-- ####### BELOW IS A WORK IN PROGRESS ####### -->
+
+  <a href="#" class="js-next" data-id="<%=@review.id%>">Next Review</a>
+  <h1 class="reviewTitle"><%= @review.title %></h1>
+  <p class="reviewContent"><%= @review.content %></p>
+  <p class="reviewRating"><%= @review.rating %></p>
+
+  <script type="text/javascript" charset="utf-8">
+  $(function () {
+    $(".js-next").on("click", function() {
+      var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+      $.get("/products/" + nextId + ".json", function(data) {
+        $(".productName").text(data["name"]);
+        $(".productPrice").text(data["price"]);
+        $(".productDescription").text(data["description"]);
+        $(".productInventory").text(data["inventory"]);
+        // re-set the id to current on the link
+        $(".js-next").attr("data-id", data["id"]);
+      });
+      return false
+    });
+  });
+  </script>
