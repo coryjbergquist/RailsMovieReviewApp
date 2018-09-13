@@ -33,12 +33,16 @@
     $(function () {
       $(".js-reviews").on('click', function() {
         var id = $(this).data("id");
-        debugger
         $.get("/users/" + id + "/user_data", function(data) {
+          debugger
           $('#body-' + id).empty()
           // Replace text of body-id div
           $.each(data, function(index) {
-            $('#body-' + id).append("<p>" + data[index]["title"] + "</p>");
+            $('#body-' + id).append(
+              "<h3>" + data[index]["title"] + "</h3>" +
+              "<p>" + data[index]["content"] + "</p>" +
+              '<a href="/movies/' + data[index]["movie_id"] + "/reviews/" + id + '">'+ "see full review" +'</a>'
+            );
           });
         });
       });
