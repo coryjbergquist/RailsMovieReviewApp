@@ -14,18 +14,19 @@
 
 
   <!-- ####### BELOW IS A WORK IN PROGRESS ####### -->
-  <h1> Here is the review for <%= @review.movie.title %></h1>
-  <a href="#" class="js-next" data-id="<%=@review.id%>">Next Review</a>
-  <h1 class="reviewTitle"><%= @review.title %></h1>
-  <p class="reviewContent"><%= @review.content %></p>
-  <p class="reviewRating"><%= @review.rating %></p>
+  <h1> Check out this review! </h1>
+
+  <h1 class="movieTitle">Movie Title: <%= @review.movie.title %></h1>
+  <h3 class="reviewTitle">Review Title: <%= @review.title %></h3>
+  <p class="reviewContent">Review Content: <%= @review.content %></p>
+  <p class="reviewRating">Rating: <%= @review.rating %></p>
 
   <script type="text/javascript" charset="utf-8">
   $(function () {
     $(".js-next").on("click", function() {
       var nextId = parseInt($(".js-next").attr("data-id")) + 1;
       $.get("/reviews/" + nextId + ".json", function(data) {
-        debugger
+        $(".movieTitle").text(data["movie"]["title"]);
         $(".reviewTitle").text(data["title"]);
         $(".reviewContent").text(data["content"]);
         $(".reviewRating").text(data["rating"]);
@@ -36,3 +37,5 @@
     });
   });
   </script>
+
+  <a href="#" class="js-next" data-id="<%=@review.id%>">Next Review</a>
