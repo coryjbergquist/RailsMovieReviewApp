@@ -37,6 +37,7 @@ class ReviewsController < ApplicationController
     @user = @review.user
   end
 
+
   private
 
   def reviews_params

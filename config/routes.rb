@@ -26,6 +26,6 @@ Rails.application.routes.draw do
   get 'top_movies' => 'movies#top_movies'
   root 'movies#index'
 
-
+  get 'users/:id/user_data', to: 'users#user_data'
 
 end

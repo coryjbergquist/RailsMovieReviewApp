@@ -29,6 +29,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def user_data
+    user = User.find(params[:id])
+    #render json: PostSerializer.serialize(post)
+    render json: user.reviews.to_json(only: [:title, :id])
+  end
+
   private
 
   def users_params
