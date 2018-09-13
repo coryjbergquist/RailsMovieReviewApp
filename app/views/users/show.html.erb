@@ -38,10 +38,11 @@
           $('#body-' + id).empty()
           // Replace text of body-id div
           $.each(data, function(index) {
+            
             $('#body-' + id).append(
               "<h3>" + data[index]["title"] + "</h3>" +
               "<p>" + data[index]["content"] + "</p>" +
-              '<a href="/movies/' + data[index]["movie_id"] + "/reviews/" + id + '">'+ "see full review" +'</a>'
+              '<a href="/movies/' + data[index]["movie_id"] + "/reviews/" + data[index]["id"] + '">'+ "see full review" +'</a>'
             );
           });
         });

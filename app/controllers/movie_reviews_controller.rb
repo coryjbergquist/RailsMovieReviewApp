@@ -27,9 +27,8 @@ class MovieReviewsController < ApplicationController
   end
 
   def show
-    binding.pry
     @movie = Movie.find(params[:movie_id])
-    @review = @movie.reviews[params[:id].to_i]
+    @review = Review.find_by_id(params[:id])
     @user = current_user
     #render 'movies/show'
   end
