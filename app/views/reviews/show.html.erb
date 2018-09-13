@@ -1,4 +1,4 @@
-<% if flash[:notice] %>
+<!-- <% if flash[:notice] %>
    <div><font color="red">Review failed because: <%= flash[:notice] %></font></div>
  <% end %>
 
@@ -10,7 +10,7 @@
 <p>Author: <%= @review.user.name %>
   <% if is_logged_in? && current_user.id == @review.user.id %>
   <%= link_to 'click here to edit this review', edit_movie_review_path(@review.movie_id, @review.id) %>
-  <% end %>
+  <% end %> -->
 
 
   <!-- ####### BELOW IS A WORK IN PROGRESS ####### -->
@@ -24,11 +24,10 @@
   $(function () {
     $(".js-next").on("click", function() {
       var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-      $.get("/products/" + nextId + ".json", function(data) {
-        $(".productName").text(data["name"]);
-        $(".productPrice").text(data["price"]);
-        $(".productDescription").text(data["description"]);
-        $(".productInventory").text(data["inventory"]);
+      $.get("/reviews/" + nextId + ".json", function(data) {
+        $(".reviewTitle").text(data["name"]);
+        $(".reviewContent").text(data["price"]);
+        $(".reviewRating").text(data["description"]);
         // re-set the id to current on the link
         $(".js-next").attr("data-id", data["id"]);
       });

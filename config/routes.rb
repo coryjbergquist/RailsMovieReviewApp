@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :reviews, controller: 'movie_reviews'
   end
 
-  resources :reviews, only: [:index, :new, :create]
+  resources :reviews, only: [:index, :new, :create, :show]
   resources :users
   resources :sessions, only: [:new]
   get '/login', to: 'sessions#new'
