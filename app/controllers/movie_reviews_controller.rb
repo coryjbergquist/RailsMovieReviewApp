@@ -7,6 +7,7 @@ class MovieReviewsController < ApplicationController
 
   def index
     @movie = Movie.find(params[:movie_id])
+    @review = @movie.reviews.first
     render 'movies/show'
   end
 

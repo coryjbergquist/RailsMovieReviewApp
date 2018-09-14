@@ -4,14 +4,40 @@ Here is your selected movie!
 
 <ul>
 
-  <% @movie.reviews.each do |review| %>
     <li>
-      <h4>Review Title: </h4> <%= review.title %>
-      <h4>Review Content: </h4><%= review.content %>
-      <h4>Review Rating: </h4><%= review.rating %>
-      <p>Author: <%= link_to review.user.name, user_path(review.user) %></p>
+      <h4>Review Title: </h4> <%= @review.title %>
+      <h4>Review Content: </h4><%= @review.content %>
+      <h4>Review Rating: </h4><%= @review.rating %>
+      <p>Author: <%= link_to @review.user.name, user_path(@review.user) %></p>
     </li>
-    <% end %>
 
 
 </ul>
+
+<button class="js-reviews" data-id="<%= @movie.id %>">See All Reviews...</button>
+
+
+<div id="body-<%= @movie.id %>"></div>
+
+
+
+  <script type="text/javascript" charset="utf-8">
+    $(function () {
+      $(".js-reviews").on('click', function() {
+        var id = $(this).data("id");
+        $.get("/movies/" + id + "/movie_data", function(data) {
+          debugger
+          $('#body-' + id).empty()
+          // Replace text of body-id div
+          $.each(data, function(index) {
+
+            $('#body-' + id).append(
+              "<h3>" + data[index]["title"] + "</h3>" +
+              "<p>" + data[index]["content"] + "</p>" +
+              '<a href="/movies/' + data[index]["movie_id"] + "/reviews/" + data[index]["id"] + '">'+ "see full review" +'</a>'
+            );
+          });
+        });
+      });
+    });
+  </script>

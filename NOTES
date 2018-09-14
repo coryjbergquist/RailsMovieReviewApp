@@ -1,9 +1,9 @@
-1. Change user page to only display name and count of movie_reviews
+x 1. Change user page to only display name and count of movie_reviews
     - add "Show Reviews" button, that displays the users reviews
       via jQuery and an Active Model Serialization JSON Backend
 
-2. Change the reviews index page to only show the most recent comment.
-    - add "Next Comment" button, that cycles through comments
+x 2. When looking at a single movie review:
+    - add "Next Review" button, that cycles through comments
       fetched and rendered via jQuery/AJAX.
 
 3. Change movie show page to only show the first review for that movie

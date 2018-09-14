@@ -27,5 +27,6 @@ Rails.application.routes.draw do
   root 'movies#index'
 
   get 'users/:id/user_data', to: 'users#user_data'
+  get 'movies/:id/movie_data', to: 'movies#movie_data'
 
 end

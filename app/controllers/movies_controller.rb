@@ -23,6 +23,11 @@ class MoviesController < ApplicationController
     render 'top_movies.html.erb'
   end
 
+  def movie_data
+    movie = Movie.find(params[:id])
+    render json: movie.reviews, status: 200
+  end
+
 private
 
   def movies_params
