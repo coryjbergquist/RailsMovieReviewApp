@@ -3,10 +3,10 @@ x 1. Change user page to only display name and count of movie_reviews
       via jQuery and an Active Model Serialization JSON Backend
 
 x 2. When looking at a single movie review:
-    - add "Next Review" button, that cycles through comments
+    - add "Next Review" button, that cycles through all comments
       fetched and rendered via jQuery/AJAX.
 
-3. Change movie show page to only show the first review for that movie
+x 3. Change movie show page to only show the first review for that movie
     - add "Show All Reviews" button, that displays all reviews
       for that movie with jQuery/AJAX.
       ----****--add serializer for movie, with has_many :reviews

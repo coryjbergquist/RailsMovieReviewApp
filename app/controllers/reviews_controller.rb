@@ -15,13 +15,15 @@ class ReviewsController < ApplicationController
     @movie = Movie.find_by(title: params[:review][:movie])
     @review = @movie.reviews.build(reviews_params)
     if @review.save
-      redirect_to user_path(current_user)
+      render json: @review, status: 201
     else
       @user = current_user
       flash[:notice] = @review.errors.full_messages.join(", ")
       render "new"
     end
   end
+
+
 
   def edit
     @user = current_user

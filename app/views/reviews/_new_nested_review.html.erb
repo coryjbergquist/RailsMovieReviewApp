@@ -10,3 +10,48 @@
   <%= f.select :rating, (1..5) %>
   <%= f.submit "Create Review" %>
 <% end %>
+
+
+
+
+<!-- EVERYTHING UNDER THIS IS A WORK IN PROGRESS -->
+
+
+
+
+<%= form_for(@movie, @review) do |f| %>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<div id="postResult">
+  <h2 id="reviewTitle"></h2>
+  <p id="reviewContent"></p>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('form').submit(function(event) {
+      event.preventDefault();
+
+      var values = $(this).serialize();
+
+      var posting = $.post('/reviews', values);
+
+      posting.done(function(data) {
+        var post = data;
+        $("#reviewTitle").text(post["title"]);
+        $("#reviewBody").text(post["content"]);
+      });
+    });
+  });
+</script>
