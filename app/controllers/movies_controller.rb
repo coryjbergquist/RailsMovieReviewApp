@@ -25,7 +25,7 @@ class MoviesController < ApplicationController
 
   def movie_data
     movie = Movie.find(params[:id])
-    render json: movie.reviews, status: 200
+    render json: movie, serializer: MovieSerializer, status: 200
   end
 
 private

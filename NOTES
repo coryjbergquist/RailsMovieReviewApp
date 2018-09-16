@@ -9,6 +9,7 @@ x 2. When looking at a single movie review:
 3. Change movie show page to only show the first review for that movie
     - add "Show All Reviews" button, that displays all reviews
       for that movie with jQuery/AJAX.
+      ----****--add serializer for movie, with has_many :reviews
 
 4. Change movie review form to submit review via an AJAX POST request
     - review would be serialized, then submitted via AJAX POST request

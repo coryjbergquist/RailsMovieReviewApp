@@ -3,16 +3,4 @@ class ReviewSerializer < ActiveModel::Serializer
   belongs_to :movie
   belongs_to :user
 
-  # def self.serialize(reviews)
-  #   reviews.map do |review|
-  #     serialized_product = '{'
-  #
-  #     serialized_product += '"id": ' + review.id.to_s + ', '
-  #     serialized_product += '"title": "' + review.title + '", '
-  #     serialized_product += '"content": "' + review.content + '", '
-  #
-  #     serialized_product += '}'
-  #   end
-  # end
-
 end

@@ -26,15 +26,14 @@ Here is your selected movie!
       $(".js-reviews").on('click', function() {
         var id = $(this).data("id");
         $.get("/movies/" + id + "/movie_data", function(data) {
-          debugger
+
           $('#body-' + id).empty()
           // Replace text of body-id div
-          $.each(data, function(index) {
-
+          $.each(data["reviews"], function(index) {
             $('#body-' + id).append(
-              "<h3>" + data[index]["title"] + "</h3>" +
-              "<p>" + data[index]["content"] + "</p>" +
-              '<a href="/movies/' + data[index]["movie_id"] + "/reviews/" + data[index]["id"] + '">'+ "see full review" +'</a>'
+              "<h3>" + data["reviews"][index]["title"] + "</h3>" +
+              "<p>" + data["reviews"][index]["content"] + "</p>" +
+              '<a href="/movies/' + data["reviews"][index]["movie_id"] + "/reviews/" + data["reviews"][index]["id"] + '">'+ "see full review" +'</a>'
             );
           });
         });
