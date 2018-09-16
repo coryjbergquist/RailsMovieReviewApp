@@ -11,7 +11,7 @@ x 3. Change movie show page to only show the first review for that movie
       for that movie with jQuery/AJAX.
       ----****--add serializer for movie, with has_many :reviews
 
-4. Change movie review form to submit review via an AJAX POST request
+x 4. Change movie review form to submit review via an AJAX POST request
     - review would be serialized, then submitted via AJAX POST request
       with the response being the new object in JSON and then appending
       that new comment to the DOM using JavaScript (ES6 Template Literals
