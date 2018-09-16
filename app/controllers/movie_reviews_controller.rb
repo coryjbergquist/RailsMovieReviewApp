@@ -18,10 +18,10 @@ class MovieReviewsController < ApplicationController
 
   def create
     @movie = Movie.find(params[:movie_id])
-    @movie.reviews.build(movie_reviews_params)
+    @review = @movie.reviews.build(movie_reviews_params)
     @movie.reviews.last.user_id = current_user.id
     @movie.save
-    redirect_to review_path(@movie.reviews.last)
+    render json: @review, status: 201
     #make a partial for a new review form specifically for this nested route
     #make sure that form sends to this nested controller, not the regular
     #reviews controller
