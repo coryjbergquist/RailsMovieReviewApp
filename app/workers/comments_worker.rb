@@ -1,7 +1,7 @@
 class CommentsWorker
   include Sidekiq::Worker
 
-  def perform(leads_file)
+  def perform(movie_comments)
 
   end
 end

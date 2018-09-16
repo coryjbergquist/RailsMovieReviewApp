@@ -1,63 +1,77 @@
-<h3>Make a new review for <%= @movie.title %></h3>
+<!DOCTYPE html>
+<html>
+<head>
+  <%= javascript_include_tag "comments" %>
+</head>
 
-<%= form_for [@movie, @review] do |f| %>
-
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-  <%= f.label :rating %>
-  <%= f.select :rating, (1..5) %>
-  <%= f.submit "Create Review" %>
-<% end %>
+<body>
 
 
+  <h3>Make a new review for <%= @movie.title %></h3>
 
+  <%= form_for [@movie, @review] do |f| %>
 
-<!-- EVERYTHING UNDER THIS IS A WORK IN PROGRESS -->
-
-
-
-
-<%= form_for [@movie, @review], html: {movieId: @movie.id} do |f| %>
-  <div class="field">
-    <%= hidden_field_tag 'hidden', @movie.id  %>
-    <%= f.label :title %><br>
+    <%= f.label :title %>
     <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_field :content %>
-  </div>
-  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
     <%= f.label :rating %>
     <%= f.select :rating, (1..5) %>
+    <%= f.submit "Create Review" %>
+  <% end %>
+
+
+
+
+
+  <!-- EVERYTHING UNDER THIS IS A WORK IN PROGRESS -->
+
+
+
+
+  <%= form_for [@movie, @review], html: {movieId: @movie.id} do |f| %>
+    <div class="field">
+      <%= hidden_field_tag 'hidden', @movie.id  %>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :content %><br>
+      <%= f.text_field :content %>
+    </div>
+    <div class="field">
+      <%= f.label :rating %>
+      <%= f.select :rating, (1..5) %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+  <div id="postResult">
+    <h2 id="reviewTitle"></h2>
+    <p id="reviewContent"></p>
+    <p id="reviewRating"></p>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
 
-<div id="postResult">
-  <h2 id="reviewTitle"></h2>
-  <p id="reviewContent"></p>
-  <p id="reviewRating"></p>
-</div>
+  <script type="text/javascript" charset="utf-8">
+    $(function () {
+      $('form').submit(function(event) {
+        event.preventDefault();
+        var $values = $(this).serializeArray();
+        var $posting = $.post('/movies/' + this[2]["value"] +
+                              '/reviews/', $values);
+        $posting.done(function(data) {
+          var post = data;
 
-<script type="text/javascript" charset="utf-8">
-  $(function () {
-    $('form').submit(function(event) {
-      event.preventDefault();
-      var values = $(this).serializeArray();
-      var posting = $.post('/movies/' + this[2]["value"] +
-                            '/reviews/', values);
-      posting.done(function(data) {
-        var post = data;
-
-        $("#reviewTitle").text(post["title"]);
-        $("#reviewContent").text(post["content"]);
-        $("#reviewRating").text(post["rating"]);
+          $("#reviewTitle").text(post["title"]);
+          $("#reviewContent").text(post["content"]);
+          $("#reviewRating").text(post["rating"]);
+        });
       });
     });
-  });
-</script>
+  </script>
+
+
+</body>
+</html>
