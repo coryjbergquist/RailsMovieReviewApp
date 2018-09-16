@@ -13,6 +13,7 @@ After starting your local server at http://localhost:3000/, you are able to crea
 1. Enter "git clone git@github.com:coryjbergquist/RailsMovieReviewApp.git" into your terminal, while in your desired directory.
 2. Navigate to newly created directory.
 3. Run "bundle install" to install all gems.
+4. Run "brew install redis" to install Redis for use of "sideqik"
 4. Run rake db:migrate rake db:seed
 5. If you wish to have use of the facebook login feature:
   visit "https://developers.facebook.com/apps" to make your own app.
