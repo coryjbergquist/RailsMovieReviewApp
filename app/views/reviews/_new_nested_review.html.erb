@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%= javascript_include_tag "comments" %>
+  <%= javascript_include_tag "reviews" %>
 </head>
 
 <body>
@@ -62,11 +62,9 @@
         var $posting = $.post('/movies/' + this[2]["value"] +
                               '/reviews/', $values);
         $posting.done(function(data) {
-          var post = data;
-
-          $("#reviewTitle").text(post["title"]);
-          $("#reviewContent").text(post["content"]);
-          $("#reviewRating").text(post["rating"]);
+          var review = new Review(data)
+          var reviewRender = Review.renderReview()
+          $("#postResult").append(reviewRender)
         });
       });
     });
