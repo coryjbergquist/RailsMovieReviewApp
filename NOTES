@@ -17,7 +17,7 @@ x 4. Change movie review form to submit review via an AJAX POST request
       that new comment to the DOM using JavaScript (ES6 Template Literals
       can help out a lot with this).
 
-5. Must translate the JSON responses into Javascript Model Objects.
+x 5. Must translate the JSON responses into Javascript Model Objects.
       The Model Objects must have at least one method on the prototype.
       Formatters work really well for this. Borrowing from the previous
       example, instead of plainly taking the JSON response of the newly

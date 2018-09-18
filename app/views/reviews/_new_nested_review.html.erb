@@ -46,7 +46,6 @@
                               '/reviews/', $values);
         $posting.done(function(data) {
           var review = new Review(data);
-          var reviewRender = review.renderReview()
           $("#postResult").append(review.renderReview())
         });
       });
