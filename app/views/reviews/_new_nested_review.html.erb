@@ -9,24 +9,6 @@
 
   <h3>Make a new review for <%= @movie.title %></h3>
 
-  <%= form_for [@movie, @review] do |f| %>
-
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-    <%= f.label :rating %>
-    <%= f.select :rating, (1..5) %>
-    <%= f.submit "Create Review" %>
-  <% end %>
-
-
-
-
-
-  <!-- EVERYTHING UNDER THIS IS A WORK IN PROGRESS -->
-
-
 
 
   <%= form_for [@movie, @review], html: {movieId: @movie.id} do |f| %>
@@ -49,6 +31,7 @@
   <% end %>
 
   <div id="postResult">
+    <h1 id="movieTitle"></h1>
     <h2 id="reviewTitle"></h2>
     <p id="reviewContent"></p>
     <p id="reviewRating"></p>
@@ -62,9 +45,9 @@
         var $posting = $.post('/movies/' + this[2]["value"] +
                               '/reviews/', $values);
         $posting.done(function(data) {
-          var review = new Review(data)
-          var reviewRender = Review.renderReview()
-          $("#postResult").append(reviewRender)
+          var review = new Review(data);
+          var reviewRender = review.renderReview()
+          $("#postResult").append(review.renderReview())
         });
       });
     });
