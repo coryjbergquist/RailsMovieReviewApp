@@ -2,12 +2,6 @@
    <div><font color="red">Review failed because: <%= flash[:notice] %></font></div>
  <% end %>
 
-<div class="editLink">
-  <% if is_logged_in? && current_user.id == @review.user.id %>
-  <%= link_to 'click here to edit this review', edit_movie_review_path(@review.movie_id, @review.id) %>
-  <% end %>
-</div>
-
   <!-- ####### BELOW IS A WORK IN PROGRESS ####### -->
   <h1> Check out this review! </h1>
 
@@ -15,6 +9,12 @@
   <h3 class="reviewTitle">Review Title: <%= @review.title %></h3>
   <p class="reviewContent">Review Content: <%= @review.content %></p>
   <p class="reviewRating">Rating: <%= @review.rating %></p>
+
+  <div class="editLink">
+    <% if is_logged_in? && current_user.id == @review.user.id %>
+    <%= link_to 'click here to edit this review', edit_movie_review_path(@review.movie_id, @review.id) %>
+    <% end %>
+  </div>
 
   <script type="text/javascript" charset="utf-8">
   $(function () {
@@ -38,6 +38,7 @@
   <script type="text/javascript" charset="utf-8">
   $(function () {
     $(".js-previous").on("click", function() {
+      $(".editLink").html('');
       var nextId = parseInt($(".js-next").attr("review-id")) - 1;
       $.get("/reviews/" + nextId + ".json", function(data) {
 
