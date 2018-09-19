@@ -34,6 +34,7 @@ class MovieReviewsController < ApplicationController
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @review, status: 200}
+      
     end
     #render 'movies/show'
   end
