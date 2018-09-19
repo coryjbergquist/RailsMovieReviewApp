@@ -19,6 +19,6 @@ User.create(name: "Jerb Spikles", password: "password")
 Review.create(title: "The Last Samurai Sucks", content: "I really hated it", rating: 1, user_id: 1, movie_id: 1)
 Review.create(title: "Mrs. Doubtfire is the best!", content: "I love it so much", rating: 5, user_id: 2, movie_id: 2)
 Review.create(title: "The Last Samurai is ok", content: "I thought it was pretty good", rating: 3, user_id: 2, movie_id: 1)
-Review.creat(title: "Mrs. Doubtfire made me laugh", content: "Robin Williams is a genius!", rating: 5, user_id: 1, movie_id: 2)
+Review.create(title: "Mrs. Doubtfire made me laugh", content: "Robin Williams is a genius!", rating: 5, user_id: 1, movie_id: 2)
 Review.create(title: "Jurrasic Park is so scary!", content: "all the dinosaurs had me screaming and running for the exit!", rating: 4, user_id: 1, movie_id: 4)
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
