@@ -13,10 +13,12 @@ Movie.create(title: "Blues Brothers", release_year: 1988)
 Movie.create(title: "Jurassic Park", release_year: 1997)
 Movie.create(title: "Star Wars", release_year: 1977)
 
-User.create(name: "Cory", password: "password1", admin: true)
-User.create(name: "Jerb Spikles", password: "password2")
+User.create(name: "Cory", password: "password")
+User.create(name: "Jerb Spikles", password: "password")
 
 Review.create(title: "The Last Samurai Sucks", content: "I really hated it", rating: 1, user_id: 1, movie_id: 1)
 Review.create(title: "Mrs. Doubtfire is the best!", content: "I love it so much", rating: 5, user_id: 2, movie_id: 2)
 Review.create(title: "The Last Samurai is ok", content: "I thought it was pretty good", rating: 3, user_id: 2, movie_id: 1)
+Review.creat(title: "Mrs. Doubtfire made me laugh", content: "Robin Williams is a genius!", rating: 5, user_id: 1, movie_id: 2)
+Review.create(title: "Jurrasic Park is so scary!", content: "all the dinosaurs had me screaming and running for the exit!", rating: 4, user_id: 1, movie_id: 4)
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
