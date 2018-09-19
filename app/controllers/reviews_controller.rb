@@ -23,11 +23,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def create
-  @post = Post.create(post_params)
-
-end
-
   def edit
     @user = current_user
     @review = Review.find(params[:id])
