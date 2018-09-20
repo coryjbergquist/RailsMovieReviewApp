@@ -83,6 +83,44 @@ $(function () {
   });
 });
 
+// Reviews Show Next/Previous links
+
+
+$(function () {
+  $(".js-next").on("click", function() {
+    $(".editLink").html('');
+    var nextId = parseInt($(".js-next").attr("review-id")) + 1;
+    $.get("/reviews/" + nextId + ".json", function(data) {
+
+      $(".movieTitle").html("Movie Title: " + data["movie"]["title"]);
+      $(".reviewTitle").html("Review Title: " + data["title"]);
+      $(".reviewContent").html("Review Content: " + data["content"]);
+      $(".reviewRating").html("Rating: " + data["rating"]);
+      // re-set the id to current on the link
+      $(".js-next").attr("review-id", data["id"]);
+    });
+    return false
+  });
+});
+
+$(function () {
+  $(".js-previous").on("click", function() {
+    $(".editLink").html('');
+    var nextId = parseInt($(".js-next").attr("review-id")) - 1;
+    $.get("/reviews/" + nextId + ".json", function(data) {
+
+      $(".movieTitle").html("Movie Title: " + data["movie"]["title"]);
+      $(".reviewTitle").html("Review Title: " + data["title"]);
+      $(".reviewContent").html("Review Content: " + data["content"]);
+      $(".reviewRating").html("Rating: " + data["rating"]);
+      // re-set the id to current on the link
+      $(".js-next").attr("review-id", data["id"]);
+    });
+    return false
+  });
+});
+
+
 function test() {
   console.log("this is a test")
 }
