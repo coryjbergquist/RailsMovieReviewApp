@@ -70,6 +70,19 @@ $(function () {
   });
 });
 
+$(function () {
+  $('form').submit(function(event) {
+    event.preventDefault();
+    var $values = $(this).serializeArray();
+    var $posting = $.post('/movies/' + this[2]["value"] +
+                          '/reviews/', $values);
+    $posting.done(function(data) {
+      var review = new Review(data);
+      $("#postResult").append(review.renderReview())
+    });
+  });
+});
+
 function test() {
   console.log("this is a test")
 }
