@@ -16,6 +16,9 @@
     <% end %>
   </div>
 
+  <a href="#" class="js-previous" review-id="<%=@review.id%>">Previous Review</a>
+  <a href="#" class="js-next" review-id="<%=@review.id%>">Next Review</a>
+
   <script type="text/javascript" charset="utf-8">
   $(function () {
     $(".js-next").on("click", function() {
@@ -53,6 +56,3 @@
     });
   });
   </script>
-
-  <a href="#" class="js-previous" review-id="<%=@review.id%>">Previous Review</a>
-  <a href="#" class="js-next" review-id="<%=@review.id%>">Next Review</a>

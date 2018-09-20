@@ -26,3 +26,15 @@ x 5. Must translate the JSON responses into Javascript Model Objects.
       perhaps concatenate (format) the comments authors first and last name.
       You would then use the object to append the comment information to
       the DOM.
+
+  6. Movie review new form, clear form so you can make more reviews
+      without refreshing.
+
+  7. ES6 syntax error already defined Review
+
+  8. Change "each" in javascript file and script tags
+    http://api.jquery.com/jquery.each/
+
+  9. Sched. next time: hoisting scope.
+
+  10. Add some styling. Maybe bootstrap
