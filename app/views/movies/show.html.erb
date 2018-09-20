@@ -18,26 +18,3 @@ Here is your selected movie!
 <button class="js-topReviews" data-id="<%= @movie.id %>">See Top Reviews...</button>
 
 <div id="body-<%= @movie.id %>"></div>
-
-
-
-
-  <!-- <script type="text/javascript" charset="utf-8">
-    $(function () {
-      $(".js-reviews").on('click', function() {
-        var id = $(this).data("id");
-        $.get("/movies/" + id + "/movie_data", function(data) {
-
-          $('#body-' + id).empty()
-          // Replace text of body-id div
-          $.each(data["reviews"], function(index) {
-            $('#body-' + id).append(
-              "<h3>" + data["reviews"][index]["title"] + "</h3>" +
-              "<p>" + data["reviews"][index]["content"] + "</p>" +
-              '<a href="/movies/' + data["reviews"][index]["movie_id"] + "/reviews/" + data["reviews"][index]["id"] + '">'+ "see full review" +'</a>'
-            );
-          });
-        });
-      });
-    });
-  </script> -->
