@@ -37,6 +37,6 @@ STILL NEED TO DO:
 x 8. Change "each" in javascript file and script tags
     http://api.jquery.com/jquery.each/
 
-  9. Sched. next time: hoisting scope.
+x 9. Sched. next time: hoisting scope.
 
   10. Add some styling. Maybe bootstrap
