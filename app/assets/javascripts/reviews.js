@@ -31,24 +31,29 @@ Review.prototype.renderReview = function() {
 }
 
 $(function () {
+
+
   $(".js-reviews").on('click', function() {
     var id = $(this).data("id");
     $.get("/movies/" + id + "/movie_data", function(data) {
 
       $('#body-' + id).empty()
       // Replace text of body-id div
-      $.each(data["reviews"], function(index) {
+      const result = data["reviews"]
+      result.forEach(function(result) {
+
         $('#body-' + id).append(
-          "<h3>" + data["reviews"][index]["title"] + "</h3>" +
-          "<p>" + data["reviews"][index]["content"] + "</p>" +
-          '<a href="/movies/' + data["reviews"][index]["movie_id"] + "/reviews/" + data["reviews"][index]["id"] + '">'+ "see full review" +'</a>'
+          "<h3>" + result["title"] + "</h3>" +
+          "<p>" + result["content"] + "</p>" +
+          "<p>" + result["rating"] + "</p>" +
+          '<a href="/movies/' + result["movie_id"] + "/reviews/" + result["id"] + '">'+ "see full review" +'</a>'
         );
       });
     });
   });
-});
 
-$(function () {
+
+
   $(".js-topReviews").on('click', function() {
     var id = $(this).data("id");
     $.get("/movies/" + id + "/movie_data", function(data) {
@@ -57,20 +62,19 @@ $(function () {
       // Replace text of body-id div
 
       const result = data["reviews"].filter(review => review.rating > 4);
-      $.each(result, function(index) {
-
+      result.forEach(function(result) {
         $('#body-' + id).append(
-          "<h3>" + result[index]["title"] + "</h3>" +
-          "<p>" + result[index]["content"] + "</p>" +
-          "<p>" + result[index]["rating"] + "</p>" +
-          '<a href="/movies/' + result[index]["movie_id"] + "/reviews/" + result[index]["id"] + '">'+ "see full review" +'</a>'
+          "<h3>" + result["title"] + "</h3>" +
+          "<p>" + result["content"] + "</p>" +
+          "<p>" + result["rating"] + "</p>" +
+          '<a href="/movies/' + result["movie_id"] + "/reviews/" + result["id"] + '">'+ "see full review" +'</a>'
         );
       });
     });
   });
-});
 
-$(function () {
+
+
   $('form').submit(function(event) {
     event.preventDefault();
     var $values = $(this).serializeArray();
@@ -79,14 +83,18 @@ $(function () {
     $posting.done(function(data) {
       var review = new Review(data);
       $("#postResult").append(review.renderReview())
+      // $('#new_review')[0].reset()
+      $( '#new_review' ).each(function(){
+        this.reset();
+      });
     });
   });
-});
+
+
 
 // Reviews Show Next/Previous links
 
 
-$(function () {
   $(".js-next").on("click", function() {
     $(".editLink").html('');
     var nextId = parseInt($(".js-next").attr("review-id")) + 1;
@@ -101,9 +109,9 @@ $(function () {
     });
     return false
   });
-});
 
-$(function () {
+
+
   $(".js-previous").on("click", function() {
     $(".editLink").html('');
     var nextId = parseInt($(".js-next").attr("review-id")) - 1;
@@ -118,7 +126,27 @@ $(function () {
     });
     return false
   });
+
+
 });
+
+
+// -----USE A CUSTOM BUTTON TO SUBMIT FORM ------
+// $(function () {
+//   $("#newReview").on('click', function() {
+//     event.preventDefault();
+//     var $values = $(this).serializeArray();
+//     var $posting = $.post('/movies/' + this[2]["value"] +
+//                           '/reviews/', $values);
+//     $posting.done(function(data) {
+//       var review = new Review(data);
+//       $("#postResult").append(review.renderReview())
+//       // $('#new_review')[0].reset()
+//       document.getElementById("new_review").value = "";
+//     });
+//   });
+// });
+
 
 
 function test() {
