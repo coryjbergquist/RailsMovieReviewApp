@@ -133,13 +133,14 @@ $(function () {
     $.get("/users/" + $id + "/user_data", function(data) {
       $('#body-' + $id).empty()
       // Replace text of body-id div
-      $.each(data, function(index) {
+
+      data.forEach(function(result) {
 
         $('#body-' + $id).append(
-          "<h2>" + "Movie: "  + data[index]["movie"]["title"] + "</h2>" +
-          "<h3>" + "Title: "  + data[index]["title"] + "</h3>" +
-          "<p>" + "Content: "  + data[index]["content"] + "</p>" +
-          '<a href="/movies/' + data[index]["movie_id"] + "/reviews/" + data[index]["id"] + '">'+ "see full review" +'</a>'
+          "<h3>" + result["title"] + "</h3>" +
+          "<p>" + result["content"] + "</p>" +
+          "<p>" + result["rating"] + "</p>" +
+          '<a href="/movies/' + result["movie_id"] + "/reviews/" + result["id"] + '">'+ "see full review" +'</a>'
         );
       });
     });
