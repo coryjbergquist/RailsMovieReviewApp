@@ -1,4 +1,4 @@
-$(function () {
+$( document ).on('turbolinks:load', function() {
   attachListeners();
 })
 
@@ -67,7 +67,7 @@ var attachListeners = function() {
 
 
 
-  $('form').submit(function(event) {
+  $('#new_review').submit(function(event) {
     event.preventDefault();
     var $values = $(this).serializeArray();
     var $posting = $.post('/movies/' + this[2]["value"] +
@@ -79,10 +79,11 @@ var attachListeners = function() {
       $( '#new_review' ).each(function(){
         this.reset();
       });
+      $("#sub").removeAttr('disabled')
     });
   });
 
-
+removeAttr('disabled')
 
 // Reviews Show Next/Previous links
 
