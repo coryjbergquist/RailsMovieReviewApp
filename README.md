@@ -26,10 +26,6 @@ After starting your local server at http://localhost:3000/, you are able to crea
 9. The use of ActiveAdmin is not fully functioning, to enter admin mode,
     navigate to: "http://localhost:3000/admin" and login using username: "admin@example.com" and password: "password". As of now the admin has the ability to delete users and movies, so use with caution. To learn more about ActiveAdmin, visit: "https://github.com/activeadmin/activeadmin"
 
-# CONTRIBUTIONS
-
-Bug reports and pull requests are welcome at https://github.com/coryjbergquist/RailsMovieReviewApp
-
 # LICENSE
 
  This project has been licensed under the MIT open source license:
